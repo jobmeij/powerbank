@@ -1,0 +1,10 @@
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:1178:6:CAD_Check_HW_SNK	4
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:1244:6:CAD_Check_HW_SRC	2
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_gpio.h:496:22:LL_GPIO_SetPinPull.constprop	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_gpio.h:285:22:LL_GPIO_SetPinMode.constprop	1
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:841:10:CAD_StateMachine_DRP	47
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:238:6:CAD_Init	3
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:387:6:CAD_Enter_ErrorRecovery	1
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:405:10:CAD_SRC_Set_ResistorRp	1
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:418:10:CAD_Set_ResistorRp	1
+../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/usbpd_cad_hw_if.c:955:10:CAD_StateMachine	9
