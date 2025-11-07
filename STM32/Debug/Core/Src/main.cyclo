@@ -2,17 +2,18 @@
 ../Drivers/CMSIS/Include/core_cm4.h:1679:22:void __NVIC_EnableIRQ(IRQn_Type)	2
 ../Drivers/CMSIS/Include/core_cm4.h:1809:22:void __NVIC_SetPriority(IRQn_Type, uint32_t)	2
 ../Drivers/CMSIS/Include/core_cm4.h:1856:26:uint32_t NVIC_EncodePriority(uint32_t, uint32_t, uint32_t)	2
-../Core/Src/main.cpp:93:5:int main()	1
-../Core/Src/main.cpp:180:6:void SystemClock_Config()	3
-../Core/Src/main.cpp:230:13:void MX_ADC1_Init()	4
-../Core/Src/main.cpp:298:13:void MX_TIM8_Init()	5
-../Core/Src/main.cpp:375:13:void MX_UART4_Init()	5
-../Core/Src/main.cpp:502:13:void MX_DMA_Init()	1
-../Core/Src/main.cpp:524:13:void MX_GPIO_Init()	1
-../Core/Src/main.cpp:553:6:void StartDefaultTask(void*)	1
-../Core/Src/main.cpp:577:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
-../Core/Src/main.cpp:595:6:void Error_Handler()	1
-../Core/Src/main.cpp:604:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/main.cpp:604:1:void __static_initialization_and_destruction_1()	1
-../Core/Src/main.cpp:604:1:cpp)	1
-../Core/Src/main.cpp:604:1:cpp)	1
+../Core/Src/main.cpp:95:5:int main()	1
+../Core/Src/main.cpp:183:6:void SystemClock_Config()	3
+../Core/Src/main.cpp:233:13:void MX_ADC1_Init()	4
+../Core/Src/main.cpp:301:13:void MX_SPI1_Init()	2
+../Core/Src/main.cpp:341:13:void MX_TIM8_Init()	5
+../Core/Src/main.cpp:418:13:void MX_UART4_Init()	5
+../Core/Src/main.cpp:545:13:void MX_DMA_Init()	1
+../Core/Src/main.cpp:567:13:void MX_GPIO_Init()	1
+../Core/Src/main.cpp:596:6:void StartDefaultTask(void*)	1
+../Core/Src/main.cpp:619:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
+../Core/Src/main.cpp:637:6:void Error_Handler()	1
+../Core/Src/main.cpp:646:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/main.cpp:646:1:void __static_initialization_and_destruction_1()	1
+../Core/Src/main.cpp:646:1:cpp)	1
+../Core/Src/main.cpp:646:1:cpp)	1

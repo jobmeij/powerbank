@@ -21,7 +21,6 @@
 #include "cmsis_os.h"
 #include "usbpd.h"
 #include "usb_device.h"
-#include "usbd_cdc_if.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -48,6 +47,8 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
+SPI_HandleTypeDef hspi1;
+
 TIM_HandleTypeDef htim8;
 
 UART_HandleTypeDef huart4;
@@ -62,7 +63,7 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE BEGIN PV */
 USBPD_StatusTypeDef status;
 
-Statemachine statemachine(&huart4, &hadc1, &htim8);
+Statemachine statemachine(&huart4, &hadc1, &htim8, &hspi1);
 
 extern "C" void SystemClock_Config(void);
 /* USER CODE END PV */
@@ -75,6 +76,7 @@ static void MX_DMA_Init(void);
 static void MX_UART4_Init(void);
 static void MX_TIM8_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_SPI1_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -120,6 +122,7 @@ int main(void)
   MX_UART4_Init();
   MX_TIM8_Init();
   MX_ADC1_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -127,7 +130,7 @@ int main(void)
   /* Init scheduler */
   osKernelInitialize();
   /* USBPD initialisation ---------------------------------*/
-//  MX_USBPD_Init();
+  MX_USBPD_Init();
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -291,6 +294,46 @@ static void MX_ADC1_Init(void)
 }
 
 /**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
   * @brief TIM8 Initialization Function
   * @param None
   * @retval None
@@ -424,7 +467,7 @@ static void MX_UART4_Init(void)
 //{
 //
 //  /* USER CODE BEGIN UCPD1_Init 0 */
-//
+////
 //  /* USER CODE END UCPD1_Init 0 */
 //
 //  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -488,10 +531,10 @@ static void MX_UART4_Init(void)
 //  NVIC_EnableIRQ(UCPD1_IRQn);
 //
 //  /* USER CODE BEGIN UCPD1_Init 1 */
-//
+////
 //  /* USER CODE END UCPD1_Init 1 */
 //  /* USER CODE BEGIN UCPD1_Init 2 */
-//
+////
 //  /* USER CODE END UCPD1_Init 2 */
 //
 //}
@@ -554,7 +597,6 @@ void StartDefaultTask(void *argument)
 {
   /* init code for USB_Device */
   MX_USB_Device_Init();
-
   /* USER CODE BEGIN 5 */
 	statemachine.init();
   /* Infinite loop */

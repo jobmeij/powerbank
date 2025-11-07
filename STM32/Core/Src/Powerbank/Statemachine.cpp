@@ -10,11 +10,13 @@
 Statemachine::Statemachine(
 	UART_HandleTypeDef* uartHandle,
 	ADC_HandleTypeDef* adc1Handle,
-	TIM_HandleTypeDef* tim8Handle
+	TIM_HandleTypeDef* tim8Handle,
+	SPI_HandleTypeDef* spi1Handle
 	) :
-	_huart(uartHandle),
+	_uart(uartHandle),
 	_adc1(adc1Handle),
-	_tim8(tim8Handle)
+	_tim8(tim8Handle),
+	_spi1(spi1Handle)
 	{}
 
 Statemachine::~Statemachine() {}

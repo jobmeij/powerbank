@@ -13,6 +13,7 @@
 // UART4 RX PC11 TX PC10
 // ADC1 IN1 PA0
 // USB P and N PA12 and PA11
+// SPI1 SCK PA5 MISO PA6 MOSI PA7 NSS PA4
 
 #ifndef STATEMACHINE_H_
 #define STATEMACHINE_H_
@@ -29,7 +30,8 @@ public:
 	Statemachine(
 			UART_HandleTypeDef* uartHandle,
 			ADC_HandleTypeDef* adc1Handle,
-			TIM_HandleTypeDef* tim8Handle
+			TIM_HandleTypeDef* tim8Handle,
+			SPI_HandleTypeDef* spi1Handle
 			);				// Constructor
 	virtual ~Statemachine();	// Destructor
 
@@ -43,9 +45,10 @@ public:
 
 private:
 	// Handles
-	UART_HandleTypeDef* _huart;
+	UART_HandleTypeDef* _uart;
 	ADC_HandleTypeDef* _adc1;
 	TIM_HandleTypeDef* _tim8;
+	SPI_HandleTypeDef* _spi1;
 
 	// Classes
 
