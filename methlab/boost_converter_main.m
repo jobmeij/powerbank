@@ -10,7 +10,7 @@ Vin_max = 4.2;      % Max input voltage [Volt]
 Vin = 3.7;          % Avg input voltage [Volt]
 R_Vin = 30*10^-3;   % Battery internal resistance [Ohm]
 
-Fsw = 100000;       % Switching frequency [Hertz]
+Fsw = 10*10^3;     % Switching frequency [Hertz]
 Tsw = 1/Fsw;        % Switching period [seconds]
 
 L1 = 0.88*10^-3;    % Inductance of coil 1 [Henry]
@@ -39,4 +39,7 @@ Vout_setp = 20;     % Output voltage setpoint [Volt]
 
 %% Simulation 
 Tsim = 0.03;         % Simulation duration [Seconds]
+Duty = 30;
+PWMenable = 1;      % Enable PWM [Boolean]
 
+Tstep = 10^-6;       % Simulation step size [Seconds]

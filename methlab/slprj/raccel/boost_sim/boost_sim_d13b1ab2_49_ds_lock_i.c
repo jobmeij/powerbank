@@ -1,0 +1,22 @@
+#include "ne_ds.h"
+#include "boost_sim_d13b1ab2_49_ds_sys_struct.h"
+#include "boost_sim_d13b1ab2_49_ds_lock_i.h"
+#include "boost_sim_d13b1ab2_49_ds.h"
+#include "boost_sim_d13b1ab2_49_ds_externals.h"
+#include "boost_sim_d13b1ab2_49_ds_external_struct.h"
+#include "ssc_ml_fun.h"
+int32_T boost_sim_d13b1ab2_49_ds_lock_i ( const NeDynamicSystem * sys , const
+NeDynamicSystemInput * t1 , NeDsMethodOutput * out ) { if ( ( ( t1 -> mCI .
+mX [ 3ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] < 0.5 ) && ( ( size_t ) t1 ->
+mQ . mX [ 0ULL ] == 1ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] < 0.5 ) && ( ( size_t
+) t1 -> mQ . mX [ 0ULL ] == 1ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) {
+out -> mLOCK_I . mX [ 0ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 2ULL ]
+== 0 ) && ( t1 -> mU . mX [ 0ULL ] >= 0.5 ) && ( ( size_t ) t1 -> mQ . mX [
+0ULL ] == 1ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] >= 0.5 ) && ( ( size_t ) t1
+-> mQ . mX [ 0ULL ] == 1ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out ->
+mLOCK_I . mX [ 0ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 43ULL ] == 0
+) && ( t1 -> mU . mX [ 0ULL ] > 0.7 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ]
+== 2ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] > 0.7 ) && ( ( size_t ) t1 -> mQ .
+mX [ 0ULL ] == 2ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I
+. mX [ 0ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 42ULL ] == 0 ) && ( t1
+-> mT . mX [ 0ULL ] - t1 -> mD . mX [ 1ULL ] > 1.5000000000000002E-7 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 3ULL ) ) || ( ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 1ULL ] > 1.5000000000000002E-7 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 3ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 0ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 41ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] < 0.3 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 5ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] < 0.3 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 5ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 0ULL ] = true ; } else { out -> mLOCK_I . mX [ 0ULL ] = ( ( ( t1 -> mCI . mX [ 40ULL ] == 0 ) && ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 0ULL ] > 5.0000000000000004E-8 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 6ULL ) ) || ( ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 0ULL ] > 5.0000000000000004E-8 ) && ( ( size_t ) t1 -> mQ . mX [ 0ULL ] == 6ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) ; } if ( ( ( t1 -> mCI . mX [ 14ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] >= 0.5 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 1ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] >= 0.5 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 1ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 1ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 13ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] < 0.5 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 1ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] < 0.5 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 1ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 1ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 11ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] < 0.3 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 2ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] < 0.3 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 2ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 1ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 10ULL ] == 0 ) && ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 0ULL ] > 1.5000000000000002E-7 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 3ULL ) ) || ( ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 0ULL ] > 1.5000000000000002E-7 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 3ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 1ULL ] = true ; } else if ( ( ( t1 -> mCI . mX [ 9ULL ] == 0 ) && ( t1 -> mU . mX [ 0ULL ] > 0.7 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 5ULL ) ) || ( ( t1 -> mU . mX [ 0ULL ] > 0.7 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 5ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) { out -> mLOCK_I . mX [ 1ULL ] = true ; } else { out -> mLOCK_I . mX [ 1ULL ] = ( ( ( t1 -> mCI . mX [ 8ULL ] == 0 ) && ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 1ULL ] > 5.0000000000000004E-8 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 6ULL ) ) || ( ( t1 -> mT . mX [ 0ULL ] - t1 -> mD . mX [ 1ULL ] > 5.0000000000000004E-8 ) && ( ( size_t ) t1 -> mQ . mX [ 1ULL ] == 6ULL ) && ( t1 -> mQ . mX [ 2ULL ] != 0 ) ) ) ; } out -> mLOCK_I . mX [ 2ULL ] = ( t1 -> mQ . mX [ 2ULL ] != 0 ) ; ( void ) sys ; ( void ) out ; return 0 ; }

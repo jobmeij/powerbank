@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_graph/R2021b">
+  <slsa.mm.param.graph.VariableRegistry type="slsa.mm.param.graph.VariableRegistry" uuid="e15146a1-3144-4149-b897-53d1071ad8c7">
+    <blockParameters type="slsa.mm.param.graph.BlockParameter" uuid="374a0ef6-9b7c-4227-9c04-8df0061d2546">
+      <blockPath>boost_sim/Solver Configuration/port</blockPath>
+      <parameterName>SampleTime</parameterName>
+      <expression type="slsa.mm.param.graph.Expression" uuid="2bf78c1d-139c-40b6-907b-64da2733de00"/>
+      <needsEvaluationResult>false</needsEvaluationResult>
+      <tunabilityType>Nontunable</tunabilityType>
+    </blockParameters>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="c9df7634-7f77-4248-a7e0-d0ec20f4081d">
+      <expression>0.001</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="32f509d3-8e82-415a-b4e7-1254d069df38"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="59470d52-87f8-4b37-a57d-052cf10f27fd">
+      <expression>0</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="f0a2f20b-82cd-4700-9600-c5f72430cf64"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="2bf78c1d-139c-40b6-907b-64da2733de00">
+      <expression>UseLocalSolver * LocalSolverSampleTime - (~UseLocalSolver)</expression>
+      <users type="slsa.mm.param.graph.BlockParameter" uuid="374a0ef6-9b7c-4227-9c04-8df0061d2546"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="761fd0b8-070e-4510-9e47-3b5065b04edc"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="9c35158f-f262-4dcc-9156-a7e91b8464d9"/>
+    </expressions>
+    <name>boost_sim</name>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="f0a2f20b-82cd-4700-9600-c5f72430cf64">
+      <variable type="slsa.mm.param.graph.Variable" uuid="9c35158f-f262-4dcc-9156-a7e91b8464d9"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="59470d52-87f8-4b37-a57d-052cf10f27fd"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="32f509d3-8e82-415a-b4e7-1254d069df38">
+      <variable type="slsa.mm.param.graph.Variable" uuid="761fd0b8-070e-4510-9e47-3b5065b04edc"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="c9df7634-7f77-4248-a7e0-d0ec20f4081d"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variables type="slsa.mm.param.graph.Variable" uuid="2b5917d5-a65b-41ef-920e-792d89b98041">
+      <name>Tsw</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="d32852e7-3dcd-4a1e-a362-e320bd7688e4"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="63a630a5-68e0-438e-8c9f-7743ca26de65">
+      <name>Duty</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="d32852e7-3dcd-4a1e-a362-e320bd7688e4"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="9c35158f-f262-4dcc-9156-a7e91b8464d9">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="f0a2f20b-82cd-4700-9600-c5f72430cf64"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="2bf78c1d-139c-40b6-907b-64da2733de00"/>
+      <name>UseLocalSolver</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="850f3e4c-b9ee-4b9d-b866-1be44a90823d"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="761fd0b8-070e-4510-9e47-3b5065b04edc">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="32f509d3-8e82-415a-b4e7-1254d069df38"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="2bf78c1d-139c-40b6-907b-64da2733de00"/>
+      <name>LocalSolverSampleTime</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="850f3e4c-b9ee-4b9d-b866-1be44a90823d"/>
+    </variables>
+    <workspaces type="slsa.mm.param.graph.Workspace" uuid="d32852e7-3dcd-4a1e-a362-e320bd7688e4">
+      <name>global-workspace</name>
+      <variables type="slsa.mm.param.graph.Variable" uuid="2b5917d5-a65b-41ef-920e-792d89b98041"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="63a630a5-68e0-438e-8c9f-7743ca26de65"/>
+    </workspaces>
+    <workspaces type="slsa.mm.param.graph.Workspace" uuid="850f3e4c-b9ee-4b9d-b866-1be44a90823d">
+      <name>boost_sim/Solver Configuration</name>
+      <type>MASK</type>
+      <variables type="slsa.mm.param.graph.Variable" uuid="9c35158f-f262-4dcc-9156-a7e91b8464d9"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="761fd0b8-070e-4510-9e47-3b5065b04edc"/>
+    </workspaces>
+    <contextManager type="slsa.mm.param.graph.ContextManager" uuid="cb9e751c-b7e0-4e1a-9d19-1b1833c5d1af"/>
+  </slsa.mm.param.graph.VariableRegistry>
+</MF0>
