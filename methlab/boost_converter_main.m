@@ -10,17 +10,22 @@ Vin_max = 4.2;      % Max input voltage [Volt]
 Vin = 3.7;          % Avg input voltage [Volt]
 R_Vin = 30*10^-3;   % Battery internal resistance [Ohm]
 
-Fsw = 10*10^3;     % Switching frequency [Hertz]
+Fsw = 50*10^3;     % Switching frequency [Hertz]
 Tsw = 1/Fsw;        % Switching period [seconds]
 
-L1 = 0.88*10^-3;    % Inductance of coil 1 [Henry]
-R_L1 = 9.5;         % Resistance of coil 1 [Ohm]
+L1 = 68*10^-3%0.88*10^-3;    % Inductance of coil 1 [Henry]
+R_L1 = 0.5%9.5;         % Resistance of coil 1 [Ohm]
 
 Cin = 10^-12;            % Capacitor input side [Farad] 
 Cout = 1*10^-3;     % Capacitor output side [Farad]
 
-Rload = 4;          % Output load resistance [Ohm]
+Rload = 40;          % Output load resistance [Ohm]
 Vout_setp = 20;     % Output voltage setpoint [Volt]
+
+% Initial conditions
+Vinit_Cout = 0;
+Vinit_Cin = Vin;
+Iinit_L1 = 0;
 
 
 %% KVL
@@ -38,8 +43,10 @@ Vout_setp = 20;     % Output voltage setpoint [Volt]
 
 
 %% Simulation 
-Tsim = 0.03;         % Simulation duration [Seconds]
-Duty = 30;
+Tsim = 0.1;         % Simulation duration [Seconds]
+Duty = 20;
 PWMenable = 1;      % Enable PWM [Boolean]
 
 Tstep = 10^-6;       % Simulation step size [Seconds]
+
+Vout = (1/(1-(Duty/100)))*Vin
