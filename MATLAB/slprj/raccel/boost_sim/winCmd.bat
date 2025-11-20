@@ -1,0 +1,2 @@
+chcp 65001
+cmd /D /c start "RapidAccelerator" /B "C:\Users\jobme\Documents\GitHub\powerbank\methlab\slprj\raccel\boost_sim\boost_sim.exe" --config "C:\Users\jobme\AppData\Local\Temp\raccel_inputp850ab7ee_7afa_4bfa_921e_00b6be4b4337.cfg" -server_info_file "C:\Users\jobme\AppData\Local\Temp\tpp850ab7ee_7afa_4bfa_921e_00b6be4b4337.info" -tgtconn_server_info_file "C:\Users\jobme\AppData\Local\Temp\tgtconnp850ab7ee_7afa_4bfa_921e_00b6be4b4337.info" -tgtconn_port 0 -port 0 -w >"C:\Users\jobme\Documents\GitHub\powerbank\methlab\slprj\raccel\boost_sim\cmdLog.txt"

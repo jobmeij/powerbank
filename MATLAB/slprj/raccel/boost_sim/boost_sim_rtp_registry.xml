@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_rtp/R2023a">
+  <slsa.mm.param.rtp.ModelMetadata type="slsa.mm.param.rtp.ModelMetadata" uuid="d01c6e6a-424a-4ae6-9ecd-7511688837da">
+    <modelName>boost_sim</modelName>
+  </slsa.mm.param.rtp.ModelMetadata>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="50d03f20-298a-4e13-83fd-bb43e1b7ee6e">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="96fb2946-1895-488f-89e7-8ab3480bf429"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="be78a795-e2f2-4db5-963d-5414edb42235"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="dde4c613-8897-4f62-9dcc-f13ad5422393">
+    <workspaceName>global-workspace</workspaceName>
+    <name>Vinit_Cout</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="0c624b82-52c0-4017-bfbc-cfcc310b1d22"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="9dbab0cf-7d9a-4269-8558-d05d674cc5db">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="aef5285f-1a7c-4646-8d6c-de82efb80d0d"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="1fea2427-e1d5-4288-aa78-47491a864939"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="be78a795-e2f2-4db5-963d-5414edb42235">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="50d03f20-298a-4e13-83fd-bb43e1b7ee6e"/>
+    <valueIndices>1</valueIndices>
+    <valueIndices>1</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="d67853a9-0977-4466-86e0-f40f19e1bc26">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="63f47c5d-04be-475c-aeb1-00da834681e4"/>
+    <valueIndices>2</valueIndices>
+    <valueIndices>2</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="96fb2946-1895-488f-89e7-8ab3480bf429">
+    <workspaceName>global-workspace</workspaceName>
+    <name>PWMenable</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="50d03f20-298a-4e13-83fd-bb43e1b7ee6e"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="aef5285f-1a7c-4646-8d6c-de82efb80d0d">
+    <workspaceName>global-workspace</workspaceName>
+    <name>Iinit_L1</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9dbab0cf-7d9a-4269-8558-d05d674cc5db"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="1fea2427-e1d5-4288-aa78-47491a864939">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9dbab0cf-7d9a-4269-8558-d05d674cc5db"/>
+    <valueIndices>0</valueIndices>
+    <valueIndices>0</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="63f47c5d-04be-475c-aeb1-00da834681e4">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="af753f81-0334-49ef-baa0-7cc635ccb0dc"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="d67853a9-0977-4466-86e0-f40f19e1bc26"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="af753f81-0334-49ef-baa0-7cc635ccb0dc">
+    <workspaceName>global-workspace</workspaceName>
+    <name>Vinit_Cin</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="63f47c5d-04be-475c-aeb1-00da834681e4"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="0c624b82-52c0-4017-bfbc-cfcc310b1d22">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="dde4c613-8897-4f62-9dcc-f13ad5422393"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f5aa160f-8567-4282-91dc-dcbbb12bf1d9"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f5aa160f-8567-4282-91dc-dcbbb12bf1d9">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="0c624b82-52c0-4017-bfbc-cfcc310b1d22"/>
+    <valueIndices>3</valueIndices>
+    <valueIndices>3</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="f35b4dd6-83ed-4ef4-ad88-136deedb2524">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="6019f6f2-1436-4fcf-8435-f07cd244fd20"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="4a8d3f8a-cd51-4d5f-b9f5-3331668accec"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="6019f6f2-1436-4fcf-8435-f07cd244fd20">
+    <blockPath>boost_sim/Counter Free-Running/Wrap To Zero</blockPath>
+    <name>Threshold</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f35b4dd6-83ed-4ef4-ad88-136deedb2524"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="4a8d3f8a-cd51-4d5f-b9f5-3331668accec">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f35b4dd6-83ed-4ef4-ad88-136deedb2524"/>
+    <segmentIndex>1</segmentIndex>
+    <valueIndices>0</valueIndices>
+    <valueIndices>0</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+</MF0>

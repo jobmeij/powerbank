@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_graph/R2021b">
+  <slsa.mm.param.graph.VariableRegistry type="slsa.mm.param.graph.VariableRegistry" uuid="e981b674-6c51-41d9-bb93-f90138ec03ad">
+    <blockParameters type="slsa.mm.param.graph.BlockParameter" uuid="6553e9ac-eba8-4494-9436-18cfab336fa5">
+      <blockPath>boost_sim/Counter Free-Running/Output</blockPath>
+      <parameterName>SampleTime</parameterName>
+      <expression type="slsa.mm.param.graph.Expression" uuid="54931277-a254-4a0d-a655-c354dba71d44"/>
+      <needsEvaluationResult>false</needsEvaluationResult>
+      <tunabilityType>Nontunable</tunabilityType>
+    </blockParameters>
+    <blockParameters type="slsa.mm.param.graph.BlockParameter" uuid="25752eb8-2526-41ea-914a-2df96b94d180">
+      <blockPath>boost_sim/Counter Free-Running/Wrap To Zero</blockPath>
+      <parameterName>Threshold</parameterName>
+      <expression type="slsa.mm.param.graph.Expression" uuid="97ab7754-43a1-4c79-99cd-9473a3d18d63"/>
+      <valueAttributes type="slsa.mm.param.graph.ValueAttributes" uuid="ab4a4f00-b09e-4108-9849-f580a50e541b">
+        <className>uint16</className>
+        <dimensions>1</dimensions>
+        <dimensions>1</dimensions>
+      </valueAttributes>
+    </blockParameters>
+    <blockParameters type="slsa.mm.param.graph.BlockParameter" uuid="7ed9f468-b7ab-41e9-9cb5-74a58c2987fb">
+      <blockPath>boost_sim/Solver Configuration/port</blockPath>
+      <parameterName>SampleTime</parameterName>
+      <expression type="slsa.mm.param.graph.Expression" uuid="64994503-42d3-48bc-ab81-b73162c3fbab"/>
+      <needsEvaluationResult>false</needsEvaluationResult>
+      <tunabilityType>Nontunable</tunabilityType>
+    </blockParameters>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="33741915-6acc-441c-a5e3-42e274dc0e53">
+      <expression>Tsw*2^16</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="93bfc0a5-454d-41d2-8dc6-25b6f7c38bc3"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="f3110d60-3942-4a29-931e-dc399416543b"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="1bf888a2-b66c-40af-bcbe-01558cc38e88">
+      <expression>16</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="2e63a7db-a5d0-4f2a-afb8-c6944667fcce"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="97ab7754-43a1-4c79-99cd-9473a3d18d63">
+      <expression>threshold</expression>
+      <users type="slsa.mm.param.graph.BlockParameter" uuid="25752eb8-2526-41ea-914a-2df96b94d180"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="97587171-4fff-4d6e-9631-e2cbad6e410b"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="6fce47b4-78e1-4907-bf26-036d37a40f59">
+      <expression>if isempty(NumBits)
+    % Don&apos;t risk checking out a fixed-point license for an undetermined parameter
+    threshold = [];
+else
+    threshold = cast(2^NumBits - 1, &quot;like&quot;, fi([], fixdt(0,NumBits,0)));
+end</expression>
+      <isAssignable>false</isAssignable>
+      <ownerBlockPath>boost_sim/Counter Free-Running</ownerBlockPath>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="324e7b01-133d-46bb-875a-59ba742b9320"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="9fb6b781-4682-4405-82eb-18ac363b5532"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="1a8c51bd-cd66-4320-8af7-f9faa1a2857c"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="64994503-42d3-48bc-ab81-b73162c3fbab">
+      <expression>UseLocalSolver * LocalSolverSampleTime - (~UseLocalSolver)</expression>
+      <users type="slsa.mm.param.graph.BlockParameter" uuid="7ed9f468-b7ab-41e9-9cb5-74a58c2987fb"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="c9352be7-99ba-40c2-970e-effbeaa29782"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="4e4a6818-a6a3-4999-9bf2-ba323319d53f"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="8c902416-caad-469e-b0e4-64d7d44eddff">
+      <expression>0</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="fc04f3ec-1619-4db7-a8f9-eeab9a473ea2"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="54931277-a254-4a0d-a655-c354dba71d44">
+      <expression>tsamp</expression>
+      <users type="slsa.mm.param.graph.BlockParameter" uuid="6553e9ac-eba8-4494-9436-18cfab336fa5"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="1a8c51bd-cd66-4320-8af7-f9faa1a2857c"/>
+    </expressions>
+    <expressions type="slsa.mm.param.graph.Expression" uuid="48b62a34-7032-43cc-adb1-25097855e82c">
+      <expression>Tstep</expression>
+      <users type="slsa.mm.param.graph.VariableDefinition" uuid="879d54cf-ade4-4a0a-8906-4d020c4406d0"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="607c4c53-2bfc-4375-8362-5314ce462c0d"/>
+    </expressions>
+    <name>boost_sim</name>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="2e63a7db-a5d0-4f2a-afb8-c6944667fcce">
+      <variable type="slsa.mm.param.graph.Variable" uuid="9fb6b781-4682-4405-82eb-18ac363b5532"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="1bf888a2-b66c-40af-bcbe-01558cc38e88"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="93bfc0a5-454d-41d2-8dc6-25b6f7c38bc3">
+      <variable type="slsa.mm.param.graph.Variable" uuid="1a8c51bd-cd66-4320-8af7-f9faa1a2857c"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="33741915-6acc-441c-a5e3-42e274dc0e53"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="324e7b01-133d-46bb-875a-59ba742b9320">
+      <variable type="slsa.mm.param.graph.Variable" uuid="97587171-4fff-4d6e-9631-e2cbad6e410b"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="6fce47b4-78e1-4907-bf26-036d37a40f59"/>
+    </variableDefinitions>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="fc04f3ec-1619-4db7-a8f9-eeab9a473ea2">
+      <variable type="slsa.mm.param.graph.Variable" uuid="4e4a6818-a6a3-4999-9bf2-ba323319d53f"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="8c902416-caad-469e-b0e4-64d7d44eddff"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variableDefinitions type="slsa.mm.param.graph.VariableDefinition" uuid="879d54cf-ade4-4a0a-8906-4d020c4406d0">
+      <variable type="slsa.mm.param.graph.Variable" uuid="c9352be7-99ba-40c2-970e-effbeaa29782"/>
+      <expression type="slsa.mm.param.graph.Expression" uuid="48b62a34-7032-43cc-adb1-25097855e82c"/>
+      <tunabilityType>Nontunable</tunabilityType>
+    </variableDefinitions>
+    <variables type="slsa.mm.param.graph.Variable" uuid="f3110d60-3942-4a29-931e-dc399416543b">
+      <expressions type="slsa.mm.param.graph.Expression" uuid="33741915-6acc-441c-a5e3-42e274dc0e53"/>
+      <name>Tsw</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="bbd3d640-8774-442c-a415-9aaa315c8013">
+      <name>Vinit_Cin</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="a3a5f7d3-53df-4ffa-9eda-9436d97f01bc">
+      <name>Iinit_L1</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="def438ef-6b02-4ff6-bb76-40c57e9a6043">
+      <name>Vinit_Cout</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="2626cbf9-6e2d-4912-8c1f-62cbc317d3ad">
+      <name>PWMenable</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="97587171-4fff-4d6e-9631-e2cbad6e410b">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="324e7b01-133d-46bb-875a-59ba742b9320"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="97ab7754-43a1-4c79-99cd-9473a3d18d63"/>
+      <name>threshold</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="1572f6c2-2c72-41d7-9fb4-46e01e5ac03b"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="9fb6b781-4682-4405-82eb-18ac363b5532">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="2e63a7db-a5d0-4f2a-afb8-c6944667fcce"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="6fce47b4-78e1-4907-bf26-036d37a40f59"/>
+      <name>NumBits</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="1572f6c2-2c72-41d7-9fb4-46e01e5ac03b"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="1a8c51bd-cd66-4320-8af7-f9faa1a2857c">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="93bfc0a5-454d-41d2-8dc6-25b6f7c38bc3"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="54931277-a254-4a0d-a655-c354dba71d44"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="6fce47b4-78e1-4907-bf26-036d37a40f59"/>
+      <name>tsamp</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="1572f6c2-2c72-41d7-9fb4-46e01e5ac03b"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="4e4a6818-a6a3-4999-9bf2-ba323319d53f">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="fc04f3ec-1619-4db7-a8f9-eeab9a473ea2"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="64994503-42d3-48bc-ab81-b73162c3fbab"/>
+      <name>UseLocalSolver</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="6c691758-43f9-4d92-96f4-1c40bbebf073"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="607c4c53-2bfc-4375-8362-5314ce462c0d">
+      <expressions type="slsa.mm.param.graph.Expression" uuid="48b62a34-7032-43cc-adb1-25097855e82c"/>
+      <name>Tstep</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487"/>
+    </variables>
+    <variables type="slsa.mm.param.graph.Variable" uuid="c9352be7-99ba-40c2-970e-effbeaa29782">
+      <definition type="slsa.mm.param.graph.VariableDefinition" uuid="879d54cf-ade4-4a0a-8906-4d020c4406d0"/>
+      <expressions type="slsa.mm.param.graph.Expression" uuid="64994503-42d3-48bc-ab81-b73162c3fbab"/>
+      <name>LocalSolverSampleTime</name>
+      <workspace type="slsa.mm.param.graph.Workspace" uuid="6c691758-43f9-4d92-96f4-1c40bbebf073"/>
+    </variables>
+    <workspaces type="slsa.mm.param.graph.Workspace" uuid="6c691758-43f9-4d92-96f4-1c40bbebf073">
+      <name>boost_sim/Solver Configuration</name>
+      <type>MASK</type>
+      <variables type="slsa.mm.param.graph.Variable" uuid="4e4a6818-a6a3-4999-9bf2-ba323319d53f"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="c9352be7-99ba-40c2-970e-effbeaa29782"/>
+    </workspaces>
+    <workspaces type="slsa.mm.param.graph.Workspace" uuid="3c7c220b-0ce2-4ad3-a980-9f1b93367487">
+      <name>global-workspace</name>
+      <variables type="slsa.mm.param.graph.Variable" uuid="f3110d60-3942-4a29-931e-dc399416543b"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="bbd3d640-8774-442c-a415-9aaa315c8013"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="a3a5f7d3-53df-4ffa-9eda-9436d97f01bc"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="def438ef-6b02-4ff6-bb76-40c57e9a6043"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="2626cbf9-6e2d-4912-8c1f-62cbc317d3ad"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="607c4c53-2bfc-4375-8362-5314ce462c0d"/>
+    </workspaces>
+    <workspaces type="slsa.mm.param.graph.Workspace" uuid="1572f6c2-2c72-41d7-9fb4-46e01e5ac03b">
+      <name>boost_sim/Counter Free-Running</name>
+      <type>MASK</type>
+      <variables type="slsa.mm.param.graph.Variable" uuid="97587171-4fff-4d6e-9631-e2cbad6e410b"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="9fb6b781-4682-4405-82eb-18ac363b5532"/>
+      <variables type="slsa.mm.param.graph.Variable" uuid="1a8c51bd-cd66-4320-8af7-f9faa1a2857c"/>
+    </workspaces>
+    <contextManager type="slsa.mm.param.graph.ContextManager" uuid="c31d6a32-4c82-44ad-a325-d4574496222f"/>
+  </slsa.mm.param.graph.VariableRegistry>
+</MF0>
