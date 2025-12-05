@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.12)  27 NOV 2025 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.12)  5 DEC 2025 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -159,56 +159,48 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 
 (C:\Users\Job\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
-<images/boost_converter.png, id=1, 443.6575pt x 162.6075pt>
+)) [1
+
+{C:/Users/Job/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+<images/boost_converter.png, id=10, 443.6575pt x 162.6075pt>
 File: images/boost_converter.png Graphic file (type png)
 <use images/boost_converter.png>
-Package pdftex.def Info: images/boost_converter.png  used on input line 21.
-(pdftex.def)             Requested size: 345.0pt x 126.44627pt.
-<images/boost_converter_slow.png, id=3, 443.6575pt x 163.61125pt>
+Package pdftex.def Info: images/boost_converter.png  used on input line 24.
+(pdftex.def)             Requested size: 221.8282pt x 81.30354pt.
+<images/boost_converter_slow.png, id=12, 443.6575pt x 163.61125pt>
 File: images/boost_converter_slow.png Graphic file (type png)
 <use images/boost_converter_slow.png>
-Package pdftex.def Info: images/boost_converter_slow.png  used on input line 30
+Package pdftex.def Info: images/boost_converter_slow.png  used on input line 33
 .
-(pdftex.def)             Requested size: 345.0pt x 127.22679pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/boost_converter_shigh.png, id=4, 443.6575pt x 163.61125pt>
+(pdftex.def)             Requested size: 221.8282pt x 81.80542pt.
+<images/boost_converter_shigh.png, id=13, 443.6575pt x 163.61125pt>
 File: images/boost_converter_shigh.png Graphic file (type png)
 <use images/boost_converter_shigh.png>
 Package pdftex.def Info: images/boost_converter_shigh.png  used on input line 3
-6.
-(pdftex.def)             Requested size: 345.0pt x 127.22679pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
+9.
+(pdftex.def)             Requested size: 221.8282pt x 81.80542pt.
+ [2 <./images/boost_converter.png> <./images/boost_converter_slow.png> <./image
+s/boost_converter_shigh.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
 
-[1
 
-{C:/Users/Job/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images/boost
-_converter.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
-[2 <./images/boost_converter_slow.png> <./images/boost_converter_shigh.png>]
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
  []
 
-[4] (boost_converter.aux)
+[4] [5] (boost_converter.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -217,11 +209,11 @@ L3 programming layer <2024-01-04>
 Here is how much of TeX's memory you used:
  2038 strings out of 474485
  32008 string characters out of 5744678
- 1941542 words of memory out of 5000000
+ 1944542 words of memory out of 5000000
  24343 multiletter control sequences out of 15000+600000
  563751 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,315b,230s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,13n,65p,327b,220s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Job/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 bx12.pfb><C:/Users/Job/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmbx9.pfb><C:/Users/Job/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
@@ -235,9 +227,9 @@ l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Job/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Job/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/
 Job/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on boost_converter.pdf (4 pages, 161852 bytes).
+Output written on boost_converter.pdf (5 pages, 162317 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 85 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

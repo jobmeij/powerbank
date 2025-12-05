@@ -15,31 +15,34 @@
 \noindent Deriving the model for a boost converter, using it to simulate its behavior and derive a suitable control strategy for it.
 \end{abstract}
 
+\newpage
+
 \section{Boost Converter Overview}
-A boost converter, shown in Figure \ref{fig:boost_schematic}, consists of a voltage supply $V_{in}$, inductor $L$ with parasitic series resistance $R_{L}$, two switches in a half H-bridge configuration $S_{high}$ and $S_{low}$, a capacitor $C$ and finally the load $R$. 
+A synchronous boost converter, shown in Figure \ref{fig:boost_schematic}, consists of a voltage supply $V_{in}$, inductor $L$ with parasitic series resistance $R_{L}$, two switches in a half H-bridge configuration $S_{high}$ and $S_{low}$, a capacitor $C$ and finally the load $R$. 
+
 \begin{figure}[h!]
-	\includegraphics[width=\linewidth]{images/boost_converter.png}
+	\includegraphics[scale=0.5]{images/boost_converter.png}
 	\caption{Boost converter schematic.}
 	\label{fig:boost_schematic}
 \end{figure}
 
-Its goal is to increase the voltage over the output load, $R$ in this case, compared to $V_{in}$. 
+\noindent Its goal is to increase the voltage over the output load, $R$ in this case, compared to $V_{in}$. This is achieved by switching $S_{high}$ and $S_{low}$, resulting in the circuits shown in Figure \ref{fig:boost_slow} and \ref{fig:boost_shigh}. 
 
 
 \begin{figure}[h!]
-	\includegraphics[width=\linewidth]{images/boost_converter_slow.png}
+	\includegraphics[scale=0.5]{images/boost_converter_slow.png}
 	\caption{Boost converter schematic with $S_{low}$ switch enabled.}
 	\label{fig:boost_slow}
 \end{figure}
 
 \begin{figure}[h!]
-	\includegraphics[width=\linewidth]{images/boost_converter_shigh.png}
+	\includegraphics[scale=0.5]{images/boost_converter_shigh.png}
 	\caption{Boost converter schematic with $S_{high}$ switch enabled.}
 	\label{fig:boost_shigh}
 \end{figure}
 
 
-
+\newpage
 \section{Deriving model}
 The model is derived based on the position of the switches, resulting in two models: one with the low side switch closed, and one with the high side switch closed. \\
 
