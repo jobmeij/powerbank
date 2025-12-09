@@ -7,33 +7,33 @@ clear all; close all; clc;
 L  = 68e-6;       % Inductance [H]
 R_L = 0.1;       % Inductor resistance [Ohm]
 C  = 470e-6;        % Capacitance [F]
-R  = 7;           % Load resistance [Ohm]
-Vin = 4.2;        % Input voltage [V]
+R  = 700;           % Load resistance [Ohm]
+Vin = 3.7;        % Input voltage [V]
 Vout_setp = 20;   % Setpoint output voltage [V]
 fsw = 500e3;      % Switching frequency [Hz]
 tsw = 1/fsw;
-duty = 0.82;       % Duty cycle of low side switch[-]
-t_final = 10e-3;   % Simulation end time [s]  
+duty = 0.3;     % Duty cycle [-]
+t_final = 5e-3;   % Simulation end time [s]  
 x0 = [0; 0];      % Initial conditions iL [A] and vC [V]
 % State vector: x = [iL; vC]
 
 
 % Computing some steady state things 
 duty_setp = 1-(Vin/Vout_setp);
-% duty = duty_setp 
+% duty = duty_setp
 
 I_out_ss = Vout_setp / R    % Current through load in steady state
 I_in_ss = I_out_ss * (Vout_setp / Vin)      % Assuming 100% efficiency
 
-% x0 = [I_in_ss; Vout_setp]   % Initial conditions based on computed steady states
+x0 = [I_in_ss; Vin]
 
-delta_IL_on = (Vin*duty*tsw)/L;
-delta_IL_off = ((Vin-Vout_setp)*(1-duty)*tsw) / L;
+delta_IL_on = (Vin*duty*tsw)/L
+delta_IL_off = ((Vin-Vout_setp)*(1-duty)*tsw) / L
 
 %% State space model
 % Mode 1: Switch ON (inductor charging)
 A_on = [-R_L/L, 0;
-        0, -1/(R*C)];
+        0, -R/C];
 B_on = [1/L;
         0];
 
@@ -53,8 +53,10 @@ ss_off = ss2tf(A_off, B_off, C, D);     %
 
 %% Open loop simulation
 % Simulate for N switching periods
-opts = odeset('RelTol',1e-9,'AbsTol',1e-12, 'MaxStep', 1e-9);     % Tolerance options, at least 2 timesteps per switching period
+opts = odeset('RelTol',1e-9,'AbsTol',1e-12, 'MaxStep', );     % Tolerance options, at least 2 timesteps per switching period
+% [t, x] = ode45(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
 [t, x] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
+
 
 
 %% Plotting
@@ -91,11 +93,11 @@ function dx = boost_dyn(t, x, A_on, B_on, A_off, B_off, Vin, fsw, duty)
     % t_mod is the time in the current switching cycle
 
     if t_mod < duty*T
-        % Low side switch ON mode, high side OFF
+        % Switch ON mode
         A = A_on;
         B = B_on;
     else
-        % Low side switch OFF mode, high side ON
+        % Switch OFF mode
         A = A_off;
         B = B_off;
     end

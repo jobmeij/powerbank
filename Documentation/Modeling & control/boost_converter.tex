@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{matlab-prettifier}
 
 %opening
 \title{Modeling \& Control of Boost Converter}
@@ -162,7 +163,7 @@ The state space model when the low side switch is on:
 		=
 		\begin{bmatrix}
 			-\frac{R_{L}}{L} & 0 \\
-			0 & -\frac{R}{C} \\	
+			0 & -\frac{1}{RC} \\	
 		\end{bmatrix}
 		\begin{bmatrix}
 			i_{L} \\
@@ -246,11 +247,57 @@ State space model when the low side is off, and high side is on:
 	\end{array}
 \end{equation}
 
+\newpage
 \section{MATLAB simulation}
-TODO
+To simulate the system the following MATLAB code is used:
 
+\begin{lstlisting}[style=Matlab-editor]
+%% State space model
+% Mode 1: Switch ON (inductor charging)
+A_on = [-R_L/L, 0; 0, -1/(R*C)];
+B_on = [1/L; 0];
+	
+% Mode 2: Switch OFF (inductor discharging)
+A_off = [-R_L/L, -1/L; 1/C, -1/(R*C)];
+B_off = [1/L; 0];
+	
+	
+%% Open loop simulation
+% Simulate for N switching periods
+opts = odeset('RelTol',1e-9,'AbsTol',1e-9);     % Tolerance options
+[t, x] = ode45(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
+	
+%% Differential equation function
+function dx = boost_dyn(t, x, A_on, B_on, A_off, B_off, Vin, fsw, duty)
+	
+	T = 1/fsw;             % Switching period
+	t_mod = mod(t, T);     % Position inside switching cycle
+		
+	if t_mod < duty*T
+		% Switch ON mode
+		A = A_on;
+		B = B_on;
+	else
+		% Switch OFF mode
+		A = A_off;
+		B = B_off;
+	end
+		
+	dx = A*x + B*Vin;
+end	
+\end{lstlisting}
+
+\newpage
 \section{Control strategy}
-TODO
+Starting with the control objective.
+
+\subsection{Objective}
+Control the voltage output of the synchronous boost converter between 5 and 20V with various loads, while focussing on stability and robustness.
+
+\subsection{Strategies}
+The synchronous boost converter is a switching system. 
+
+
 
 
 
