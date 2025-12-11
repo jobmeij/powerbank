@@ -7,16 +7,20 @@ clear all; close all; clc;
 L  = 68e-6;       % Inductance [H]
 R_L = 0.1;       % Inductor resistance [Ohm]
 C  = 470e-6;        % Capacitance [F]
-R  = 7;           % Load resistance [Ohm]
-Vin = 4.2;        % Input voltage [V]
+R  = 10;           % Load resistance [Ohm]
+Vin = 3.7;        % Input voltage [V]
 Vout_setp = 20;   % Setpoint output voltage [V]
-fsw = 500e3;      % Switching frequency [Hz]
+fsw = 100e3;      % Switching frequency [Hz]
 tsw = 1/fsw;
-duty = 0.82;       % Duty cycle of low side switch[-]
-t_final = 10e-3;   % Simulation end time [s]  
+duty = 0.5;       % Duty cycle of low side switch[-]
+t_final = 5e-3;   % Simulation end time [s]  
 x0 = [0; 0];      % Initial conditions iL [A] and vC [V]
 % State vector: x = [iL; vC]
 
+% ODE settings
+opts = odeset('RelTol',1e-9,'AbsTol',1e-12, 'MaxStep', 1e-6);     % Tolerance options, at least 2 timesteps per switching period
+
+% currentloop_freq = 10e3;        % update frequency of current control loop
 
 % Computing some steady state things 
 duty_setp = 1-(Vin/Vout_setp);
@@ -43,7 +47,7 @@ A_off = [-R_L/L, -1/L;
 B_off = [1/L;
          0];
 
-C = [0 1];
+C = [1 1];                              % Output both iL and vC
 D = 0;
 
 ss_on = ss2tf(A_on, B_on, C, D);        % No TF since no output to Vc?
@@ -52,34 +56,62 @@ ss_off = ss2tf(A_off, B_off, C, D);     %
 
 
 %% Open loop simulation
-% Simulate for N switching periods
-opts = odeset('RelTol',1e-9,'AbsTol',1e-12, 'MaxStep', 1e-9);     % Tolerance options, at least 2 timesteps per switching period
-[t, x] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
-
-
-%% Plotting
-figure;
-hold on
-plot(t, x(:,1));    % iL
-plot(t, x(:,2));    % vC 
-hold off
-grid on;
-xlabel('Time (s)');
-ylabel('States');
-legend('i_L','v_C');
-title('Boost converter state-space switching simulation');
-
+if false
+    % Simulate for N switching periods    
+    [t, x] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
+    
+    
+    % Plotting
+    figure;
+    hold on
+    plot(t, x(:,1));    % iL
+    plot(t, x(:,2));    % vC 
+    hold off
+    grid on;
+    xlabel('Time (s)');
+    ylabel('States');
+    legend('i_L','v_C');
+    title('Boost converter state-space switching simulation');
+end
 
 %% Control simulation
 
-% fs_control = 10e3;      % Control loop frequency
-% ts_control = 1/fs_control;
-% 
-% for i = 1:10
-%     [tc, xc] = ode45(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
-% 
-% 
-% end
+fs_control = 10e3;      % Control loop frequency
+ts_control = 1/fs_control;
+
+t_all = [];
+x_all = []
+t_offset = 0;
+
+steps = t_final / ts_control;
+for i = 1:steps
+    % [tc, xc] = ode45(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
+    tstart = ts_control * i;                    % Start time of this control loop simulation
+    tstop = ts_control * i + ts_control;        % Stop time of this control loop simulation
+    % [tc(:,i), xc(:,i,:)] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [tstart tstop], x0, opts);
+    [t_i, x_i] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [tstart tstop], x0, opts);
+
+    t_all = [t_all; t_i];
+    x_all = [x_all; x_i];
+
+    t_offset = t_all(end);              % Get latest time
+    x0 = x_i(end,:);                    % Get latest states and pass them on to next run
+
+    duty = rand;                        % Set duty cycle for next run
+
+end
+
+% Plotting results
+figure();
+hold on
+plot(t_all,x_all(:,1))
+plot(t_all,x_all(:,2))
+hold off
+grid on
+xlabel('Time [s]')
+legend('i_{L}','v_{C}','Location','Best')
+title('Controlled simulation output')
+
 
 
 %% Differential equation function
