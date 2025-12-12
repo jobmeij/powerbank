@@ -65,7 +65,10 @@ if false
     figure;
     hold on
     plot(t, x(:,1));    % iL
-    plot(t, x(:,2));    % vC 
+    plot(t, x(:,2));    % vC / V_out
+    % DUTY
+    % P_IN
+    % P_OUT
     hold off
     grid on;
     xlabel('Time (s)');
@@ -80,36 +83,42 @@ fs_control = 10e3;      % Control loop frequency
 ts_control = 1/fs_control;
 
 t_all = [];
-x_all = []
+x_all = [];
+duty_all = [];
 t_offset = 0;
 
 steps = t_final / ts_control;
 for i = 1:steps
-    % [tc, xc] = ode45(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [0 t_final], x0, opts);
+    % Run part of the simulation for given control loop iteration
     tstart = ts_control * i;                    % Start time of this control loop simulation
     tstop = ts_control * i + ts_control;        % Stop time of this control loop simulation
-    % [tc(:,i), xc(:,i,:)] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [tstart tstop], x0, opts);
     [t_i, x_i] = ode15s(@(t,x) boost_dyn(t,x,A_on,B_on,A_off,B_off,Vin,fsw,duty), [tstart tstop], x0, opts);
 
+    % Store time, states and input (duty) for all iterations
+    samples = length(t_i);
     t_all = [t_all; t_i];
     x_all = [x_all; x_i];
+    duty_all = [duty_all; (duty*ones(samples,1))];
 
+    % Store values for next iteration
     t_offset = t_all(end);              % Get latest time
     x0 = x_i(end,:);                    % Get latest states and pass them on to next run
 
-    duty = rand;                        % Set duty cycle for next run
-
+    % Compute duty cycle for next run   
+    duty = compute_duty(x0);
 end
+
 
 % Plotting results
 figure();
 hold on
 plot(t_all,x_all(:,1))
 plot(t_all,x_all(:,2))
+plot(t_all,duty_all);
 hold off
 grid on
 xlabel('Time [s]')
-legend('i_{L}','v_{C}','Location','Best')
+legend('i_{L}','v_{C}','Duty','Location','Best')
 title('Controlled simulation output')
 
 
@@ -133,4 +142,14 @@ function dx = boost_dyn(t, x, A_on, B_on, A_off, B_off, Vin, fsw, duty)
     end
 
     dx = A*x + B*Vin;
+end
+
+
+%% Control loop function
+function duty = compute_duty(x0)
+    iC = x0(1);
+    vC = x0(2);
+    
+    
+    duty = rand;        % TODO compute duty, for now a random between 0 and 1.
 end
