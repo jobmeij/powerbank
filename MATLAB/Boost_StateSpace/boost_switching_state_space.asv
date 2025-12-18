@@ -13,7 +13,7 @@ Vout_setp = 20;   % Setpoint output voltage [V]
 fsw = 100e3;      % Switching frequency [Hz]
 tsw = 1/fsw;
 duty = 0.5;       % Duty cycle of low side switch[-]
-t_final = 200e-3;   % Simulation end time [s]  
+t_final = 500e-3;   % Simulation end time [s]  
 x0 = [0; 0];      % Initial conditions iL [A] and vC [V]
 % State vector: x = [iL; vC]
 
@@ -158,16 +158,16 @@ function [duty, pid] = compute_duty(x0, pid, Ts)
     vC_y = x0(2);
     
     % Voltage loop PID parameters
-    vC_divisor = 100;       % Factor that vC loop is slower compared to iL loop
-    vC_P = 0.1;
-    vC_I = 30;
+    vC_divisor = 100;       % Factor that vC loop i
+    vC_P = 0.5;
+    vC_I = 500;
     vC_D = 0;
     vC_Ts = Ts * vC_divisor;
 
 
     % Current loop PID parameters
-    iL_P = 0.05;               % PID proportional gain iL loop
-    iL_I = 10;                  % PID integral gain iL loop
+    iL_P = 0.1;               % PID proportional gain iL loop
+    iL_I = 5;                  % PID integral gain iL loop
     iL_D = 0;                   % PID derative gain iL loop
 
 
@@ -179,7 +179,7 @@ function [duty, pid] = compute_duty(x0, pid, Ts)
         vC_de = (vC_e - pid.vC.prev_e) / vC_Ts;             % PID differentiator
         pid.vC_u = vC_P*vC_e + vC_I*pid.vC.int + vC_D*vC_de;    % PID output
         pid.vC.prev_e = vC_e;                               % Store last error for next iteration
-        pid.vC_count = vC_divisor - 1;
+        pid.vC_count = 9;   % 10 - 1 
     else 
         pid.vC_count = pid.vC_count - 1;
     end
