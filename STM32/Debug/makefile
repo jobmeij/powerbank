@@ -11,16 +11,12 @@ RM := rm -rf
 -include sources.mk
 -include USB_Device/Target/subdir.mk
 -include USB_Device/App/subdir.mk
--include USBPD/Target/subdir.mk
--include USBPD/App/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
--include Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/src/subdir.mk
--include Middlewares/ST/STM32_USBPD_Library/Core/src/subdir.mk
 -include Drivers/STM32G4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/Powerbank/subdir.mk
@@ -98,7 +94,7 @@ main-build: Powerbank_v1.elf secondary-outputs
 
 # Tool invocations
 Powerbank_v1.elf Powerbank_v1.map: $(OBJS) $(USER_OBJS) C:\Users\Job\STM32CubeIDE\workspace_1.18.1\Powerbank_v1\STM32G431C8UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Powerbank_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Job\STM32CubeIDE\workspace_1.18.1\Powerbank_v1\STM32G431C8UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Powerbank_v1.map" -Wl,--gc-sections -static -L../Middlewares/ST/STM32_USBPD_Library/Core/lib --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "Powerbank_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Job\STM32CubeIDE\workspace_1.18.1\Powerbank_v1\STM32G431C8UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Powerbank_v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

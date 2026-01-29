@@ -58,17 +58,6 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- ../USBPD/App/usbpd.h \
- ../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h \
- ../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h \
- ../Drivers/CMSIS/Include/cmsis_compiler.h ../USBPD/App/usbpd_dpm_core.h \
- ../USBPD/Target/usbpd_dpm_conf.h ../USBPD/App/usbpd_pdo_defs.h \
- ../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h \
- ../USBPD/Target/usbpd_dpm_user.h ../USBPD/Target/usbpd_vdm_user.h \
- ../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/inc/usbpd_hw_if.h \
- ../USBPD/usbpd_devices_conf.h \
- ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_tim.h \
- ../USBPD/Target/usbpd_pwr_user.h ../USBPD/App/usbpd_pwr_if.h \
  ../USB_Device/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_Device/Target/usbd_conf.h \
@@ -141,21 +130,6 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
-../USBPD/App/usbpd.h:
-../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h:
-../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h:
-../Drivers/CMSIS/Include/cmsis_compiler.h:
-../USBPD/App/usbpd_dpm_core.h:
-../USBPD/Target/usbpd_dpm_conf.h:
-../USBPD/App/usbpd_pdo_defs.h:
-../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h:
-../USBPD/Target/usbpd_dpm_user.h:
-../USBPD/Target/usbpd_vdm_user.h:
-../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX/inc/usbpd_hw_if.h:
-../USBPD/usbpd_devices_conf.h:
-../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_tim.h:
-../USBPD/Target/usbpd_pwr_user.h:
-../USBPD/App/usbpd_pwr_if.h:
 ../USB_Device/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_Device/Target/usbd_conf.h:

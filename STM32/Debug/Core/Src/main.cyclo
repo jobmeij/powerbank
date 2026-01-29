@@ -2,18 +2,32 @@
 ../Drivers/CMSIS/Include/core_cm4.h:1679:22:void __NVIC_EnableIRQ(IRQn_Type)	2
 ../Drivers/CMSIS/Include/core_cm4.h:1809:22:void __NVIC_SetPriority(IRQn_Type, uint32_t)	2
 ../Drivers/CMSIS/Include/core_cm4.h:1856:26:uint32_t NVIC_EncodePriority(uint32_t, uint32_t, uint32_t)	2
-../Core/Src/main.cpp:95:5:int main()	1
-../Core/Src/main.cpp:183:6:void SystemClock_Config()	3
-../Core/Src/main.cpp:233:13:void MX_ADC1_Init()	4
-../Core/Src/main.cpp:301:13:void MX_SPI1_Init()	2
-../Core/Src/main.cpp:341:13:void MX_TIM8_Init()	5
-../Core/Src/main.cpp:418:13:void MX_UART4_Init()	5
-../Core/Src/main.cpp:545:13:void MX_DMA_Init()	1
-../Core/Src/main.cpp:567:13:void MX_GPIO_Init()	1
-../Core/Src/main.cpp:596:6:void StartDefaultTask(void*)	1
-../Core/Src/main.cpp:619:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
-../Core/Src/main.cpp:637:6:void Error_Handler()	1
-../Core/Src/main.cpp:646:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/main.cpp:646:1:void __static_initialization_and_destruction_1()	1
-../Core/Src/main.cpp:646:1:cpp)	1
-../Core/Src/main.cpp:646:1:cpp)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_bus.h:451:22:void LL_AHB2_GRP1_EnableClock(uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_bus.h:935:22:void LL_APB1_GRP2_EnableClock(uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:628:22:void LL_DMA_SetDataTransferDirection(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:683:22:void LL_DMA_SetMode(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:734:22:void LL_DMA_SetPeriphIncMode(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:785:22:void LL_DMA_SetMemoryIncMode(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:837:22:void LL_DMA_SetPeriphSize(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:890:22:void LL_DMA_SetMemorySize(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:944:22:void LL_DMA_SetChannelPriorityLevel(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:1406:22:void LL_DMA_SetPeriphRequest(DMA_TypeDef*, uint32_t, uint32_t)	1
+../Core/Src/main.cpp:97:5:int main()	1
+../Core/Src/main.cpp:184:6:void SystemClock_Config()	3
+../Core/Src/main.cpp:234:13:void MX_ADC1_Init()	6
+../Core/Src/main.cpp:320:13:void MX_SPI1_Init()	2
+../Core/Src/main.cpp:360:13:void MX_TIM3_Init()	4
+../Core/Src/main.cpp:405:13:void MX_TIM8_Init()	5
+../Core/Src/main.cpp:477:13:void MX_UART4_Init()	5
+../Core/Src/main.cpp:525:13:void MX_UCPD1_Init()	1
+../Core/Src/main.cpp:604:13:void MX_DMA_Init()	1
+../Core/Src/main.cpp:629:13:void MX_GPIO_Init()	1
+../Core/Src/main.cpp:650:6:void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef*)	1
+../Core/Src/main.cpp:655:6:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	1
+../Core/Src/main.cpp:668:6:void StartDefaultTask(void*)	1
+../Core/Src/main.cpp:691:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
+../Core/Src/main.cpp:709:6:void Error_Handler()	1
+../Core/Src/main.cpp:718:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/main.cpp:718:1:void __static_initialization_and_destruction_1()	1
+../Core/Src/main.cpp:718:1:cpp)	1
+../Core/Src/main.cpp:718:1:cpp)	1

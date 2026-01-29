@@ -20,7 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32g4xx_it.h"
-#include "usbpd.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -57,7 +56,9 @@
 
 /* External variables --------------------------------------------------------*/
 extern PCD_HandleTypeDef hpcd_USB_FS;
-extern TIM_HandleTypeDef htim1;
+extern DMA_HandleTypeDef hdma_adc1;
+extern ADC_HandleTypeDef hadc1;
+extern TIM_HandleTypeDef htim17;
 
 /* USER CODE BEGIN EV */
 
@@ -87,6 +88,9 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+	SCB->CFSR;
+	SCB->HFSR;
+	SCB->BFAR;
 
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
@@ -188,6 +192,34 @@ void DMA1_Channel2_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 channel3 global interrupt.
+  */
+void DMA1_Channel3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_adc1);
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles ADC1 and ADC2 global interrupt.
+  */
+void ADC1_2_IRQHandler(void)
+{
+  /* USER CODE BEGIN ADC1_2_IRQn 0 */
+
+  /* USER CODE END ADC1_2_IRQn 0 */
+  HAL_ADC_IRQHandler(&hadc1);
+  /* USER CODE BEGIN ADC1_2_IRQn 1 */
+
+  /* USER CODE END ADC1_2_IRQn 1 */
+}
+
+/**
   * @brief This function handles USB low priority interrupt remap.
   */
 void USB_LP_IRQHandler(void)
@@ -202,17 +234,17 @@ void USB_LP_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles TIM1 update interrupt and TIM16 global interrupt.
+  * @brief This function handles TIM1 trigger and commutation interrupts and TIM17 global interrupt.
   */
-void TIM1_UP_TIM16_IRQHandler(void)
+void TIM1_TRG_COM_TIM17_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 0 */
+  /* USER CODE BEGIN TIM1_TRG_COM_TIM17_IRQn 0 */
 
-  /* USER CODE END TIM1_UP_TIM16_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim1);
-  /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 1 */
+  /* USER CODE END TIM1_TRG_COM_TIM17_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim17);
+  /* USER CODE BEGIN TIM1_TRG_COM_TIM17_IRQn 1 */
 
-  /* USER CODE END TIM1_UP_TIM16_IRQn 1 */
+  /* USER CODE END TIM1_TRG_COM_TIM17_IRQn 1 */
 }
 
 /**
@@ -223,8 +255,6 @@ void UCPD1_IRQHandler(void)
   /* USER CODE BEGIN UCPD1_IRQn 0 */
 
   /* USER CODE END UCPD1_IRQn 0 */
-  USBPD_PORT0_IRQHandler();
-
   /* USER CODE BEGIN UCPD1_IRQn 1 */
 
   /* USER CODE END UCPD1_IRQn 1 */
