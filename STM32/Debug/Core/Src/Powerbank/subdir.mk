@@ -5,12 +5,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Core/Src/Powerbank/Converter.cpp \
 ../Core/Src/Powerbank/Statemachine.cpp 
 
 OBJS += \
+./Core/Src/Powerbank/Converter.o \
 ./Core/Src/Powerbank/Statemachine.o 
 
 CPP_DEPS += \
+./Core/Src/Powerbank/Converter.d \
 ./Core/Src/Powerbank/Statemachine.d 
 
 
@@ -21,7 +24,7 @@ Core/Src/Powerbank/%.o Core/Src/Powerbank/%.su Core/Src/Powerbank/%.cyclo: ../Co
 clean: clean-Core-2f-Src-2f-Powerbank
 
 clean-Core-2f-Src-2f-Powerbank:
-	-$(RM) ./Core/Src/Powerbank/Statemachine.cyclo ./Core/Src/Powerbank/Statemachine.d ./Core/Src/Powerbank/Statemachine.o ./Core/Src/Powerbank/Statemachine.su
+	-$(RM) ./Core/Src/Powerbank/Converter.cyclo ./Core/Src/Powerbank/Converter.d ./Core/Src/Powerbank/Converter.o ./Core/Src/Powerbank/Converter.su ./Core/Src/Powerbank/Statemachine.cyclo ./Core/Src/Powerbank/Statemachine.d ./Core/Src/Powerbank/Statemachine.o ./Core/Src/Powerbank/Statemachine.su
 
 .PHONY: clean-Core-2f-Src-2f-Powerbank
 

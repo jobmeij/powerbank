@@ -1,10 +1,7 @@
-../Core/Src/Powerbank/Statemachine.cpp:34:1:Statemachine::Statemachine(UART_HandleTypeDef*, ADC_HandleTypeDef*, TIM_HandleTypeDef*, TIM_HandleTypeDef*, SPI_HandleTypeDef*)	24	static
-../Core/Src/Powerbank/Statemachine.cpp:48:1:Statemachine::~Statemachine()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:48:1:virtual Statemachine::~Statemachine()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:51:6:void Statemachine::init()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:57:6:void Statemachine::iteration()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:65:6:void Statemachine::adcComplete(ADC_HandleTypeDef*)	16	static
-../Core/Src/Powerbank/Statemachine.cpp:74:6:void Statemachine::getMeasurements()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:79:6:void Statemachine::setPwmDuty(int)	16	static
-../Core/Src/Powerbank/Statemachine.cpp:84:6:void Statemachine::initPwm()	16	static
-../Core/Src/Powerbank/Statemachine.cpp:93:6:void Statemachine::initAdc()	16	static
+../Core/Src/Powerbank/Statemachine.cpp:36:1:Statemachine::Statemachine(UART_HandleTypeDef*, ADC_HandleTypeDef*, TIM_HandleTypeDef*, TIM_HandleTypeDef*, SPI_HandleTypeDef*)	24	static
+../Core/Src/Powerbank/Statemachine.cpp:51:1:Statemachine::~Statemachine()	16	static
+../Core/Src/Powerbank/Statemachine.cpp:51:1:virtual Statemachine::~Statemachine()	16	static
+../Core/Src/Powerbank/Statemachine.cpp:54:6:void Statemachine::init()	16	static
+../Core/Src/Powerbank/Statemachine.cpp:61:6:void Statemachine::iteration()	16	static
+../Core/Src/Powerbank/Statemachine.cpp:82:6:void Statemachine::setState(State)	16	static
+../Core/Src/Powerbank/Statemachine.cpp:89:6:void Statemachine::adcComplete(ADC_HandleTypeDef*)	16	static

@@ -10,9 +10,11 @@
 // 2) Iinductor 3.3k/10k
 // 3) Vout 5.6k/1k
 
+// https://github.com/WeActStudio/WeActStudio.STM32G431CoreBoard
+
 // Inputs and outputs
 // PWM TIM8 out: PB9 & PB1 (iNverted)
-// ADC TIM6
+// ADC TIM3
 // ADC1_IN1: PA0 -- Vbat
 // ADC1_IN2: PA1 -- iL
 // ADC1_IN3: PA2 -- Vout
@@ -42,58 +44,50 @@ Statemachine::Statemachine(
 	_adc1(adc1Handle),
 	_tim3(tim3Handle),
 	_tim8(tim8Handle),
-	_spi1(spi1Handle)
+	_spi1(spi1Handle),
+	converter(adc1Handle, tim3Handle, tim8Handle)
 	{}
 
 Statemachine::~Statemachine() {}
 
 // Init statemachine, runs once before iteration
 void Statemachine::init() {
-	initAdc();
-	initPwm();
+	converter.init();
+
+	setState(State::STDBY);
 }
 
 // Statemachine loop, runs at 1kHz till end of time
 void Statemachine::iteration() {
+	if (currentState == State::STDBY) {
+		// Do something
+	}
+	else if (currentState == State::OUTPUT) {
+		// boost voltage and output
+	}
+	else if (currentState == State::CHARGE) {
+		// Charge battery
+	}
+	else if (currentState == State::ERROR) {
+		// Do nothing
+	}
+
 
 	// Example Virtual Com Port message:
 //	uint8_t msg[] = "Hello from STM32G431\r\n";
 //	CDC_Transmit_FS(msg, sizeof(msg)-1);
 }
 
-// ADC complete
-void Statemachine::adcComplete(ADC_HandleTypeDef* hadc) {
-	if (hadc->Instance == ADC1) {
-		vBat = adc1Buf[0];		// PA0 battery voltage
-		iL = adc1Buf[1];		// PA1 inductor current
-		vOut = adc1Buf[2];		// PA2 boost converter output voltage
+// Request new state, move to state if allowed
+void Statemachine::setState(State requestedState) {
+	if (currentState == State::INIT && requestedState == State::STDBY) {
+		currentState = State::STDBY;
 	}
 }
 
-// Get ADC readings TODO TBD remove?
-void Statemachine::getMeasurements() {
-
-}
-
-// Set PWM duty cycle
-void Statemachine::setPwmDuty(int duty) {
-
-}
-
-// Initialize boost converter PWM
-void Statemachine::initPwm() {
-	HAL_TIM_PWM_Start(_tim8, TIM_CHANNEL_3);
-	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_3);
-
-	// Set initial duty cycle to 50%
-	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, 50);
-}
-
-//
-void Statemachine::initAdc() {
-	HAL_TIM_Base_Start(_tim3);
-//	HAL_Delay(1);  // 1 ms
-	HAL_ADC_Start_DMA(_adc1, adc1Buf, 3);
+// ADC complete, pass to converter
+void Statemachine::adcComplete(ADC_HandleTypeDef* hadc) {
+	converter.adcComplete(hadc);
 }
 
 

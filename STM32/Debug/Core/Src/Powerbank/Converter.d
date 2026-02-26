@@ -1,5 +1,5 @@
-Core/Src/Powerbank/Statemachine.o: ../Core/Src/Powerbank/Statemachine.cpp \
- ../Core/Src/Powerbank/Statemachine.h \
+Core/Src/Powerbank/Converter.o: ../Core/Src/Powerbank/Converter.cpp \
+ ../Core/Src/Powerbank/Converter.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -37,19 +37,8 @@ Core/Src/Powerbank/Statemachine.o: ../Core/Src/Powerbank/Statemachine.cpp \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../USB_Device/App/usb_device.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_Device/Target/usbd_conf.h ../USB_Device/App/usbd_cdc_if.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/States.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Converter.h
-../Core/Src/Powerbank/Statemachine.h:
+ C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h
+../Core/Src/Powerbank/Converter.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
@@ -87,16 +76,4 @@ Core/Src/Powerbank/Statemachine.o: ../Core/Src/Powerbank/Statemachine.cpp \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
-../USB_Device/App/usb_device.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../USB_Device/Target/usbd_conf.h:
-../USB_Device/App/usbd_cdc_if.h:
-../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/States.h:
 C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Converter.h:

@@ -1,3 +1,4 @@
+"./Core/Src/Powerbank/Converter.o"
 "./Core/Src/Powerbank/Statemachine.o"
 "./Core/Src/app_freertos.o"
 "./Core/Src/main.o"
