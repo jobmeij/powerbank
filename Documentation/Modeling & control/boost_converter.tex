@@ -42,6 +42,58 @@ A synchronous boost converter, shown in Figure \ref{fig:boost_schematic}, consis
 	\label{fig:boost_shigh}
 \end{figure}
 
+\textbf{TODO add Interleaved Synchronous Boost Converter, also measured voltages and currents}
+
+
+\newpage
+\section{Component choices}
+\textbf{TODO add choices for components}
+
+\subsection{Battery}
+An 18650 battery is used, exact type to be determined. Note the requirment for high current capability. 
+
+\subsection{MOSFETs}
+4x CSD18540Q5B for two half H-bridges. Chosen for their low $R_{ds,on}$, gate charge and price/performance. 
+
+\subsection{Gate drivers}
+TODO
+
+\subsection{Gate resistors and diodes}
+TODO
+
+\subsection{Inductors}
+2x FC-SE2915-2R2M coils, one for each phase of the interleaved converter. This inductor supports high current capacity at a relatively low price. It has $1.86m \omega$ resistance, $2.2\mu H \pm 20\%$ inductance and supports $I_{RMS}$ of $32A$, $I_{Sat} > 100A$. Furthermore, it has a flat copper wire coil for low losses at high frequency. 
+
+\subsection{Output capacitors}
+The output ripple of a boost converter is roughly:
+
+\begin{equation}
+	\Delta V = \frac{I_{out} \cdot Duty}{f_{sw} \cdot C_{output}}
+\end{equation}
+
+with $I_{out} = 3A$, $D=0.8$ and $f_{sw}=250kHz$. With a desired maximum output ripple of $50mV$ this results in: 
+
+\begin{equation}
+	0.05 = \frac{3A \cdot 0.8}{250kHz \cdot C_{output}}.
+\end{equation}
+
+\noindent In conclusion, $C_{output} = 192 \mu F$ or higher. \\
+
+\noindent Each phase of the converter gets 5x FS55X106K500EGG MLCC $10 \mu F \pm 10 \%$, $50V$, $X7R$ in a $2220$ package to suppress the voltage spikes from switching. At $15-20V$, it is expected that the capacity derating is around $30-50 \%$, leaving $5-7 \mu F$ per MLCC capacitor. This results in $50 \mu F$ of capacity from the MLCC capacitors and $440 \mu F$ from the polymer caps. In total around $500 \mu F$ of capacity, aiming for $20mV$ of voltage ripple.  
+
+\subsection{Input capacitors}
+Same capacitors as output are selected for first prototype, more capacity than needed. Experimentation with removing capacitors is possible.  
+
+
+\subsection{Current sensors}
+To measure inductor currents, the INA240A1 is chosen, in combination with a $5m \Omega$, because of its higher bandwidth compared to HAL current sensors. The drawback is higher losses because of added resistance. \\
+
+INA240A1 has a gain of $20V/V$, and an offset of $1.65V$. Using Ohm's law, $V = I \cdot R$, we can compute the range of the current sensor. 
+
+\subsection{Microcontroller}
+STM32G431 is selected, contains USB-C PD support, various timers and other useful peripherals. 
+
+
 
 \newpage
 \section{Deriving model}
