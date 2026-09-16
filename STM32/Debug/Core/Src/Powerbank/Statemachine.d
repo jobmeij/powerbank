@@ -46,9 +46,9 @@ Core/Src/Powerbank/Statemachine.o: ../Core/Src/Powerbank/Statemachine.cpp \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/States.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Converter.h
+ C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/States.h \
+ C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Definitions.h \
+ C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Converter.h
 ../Core/Src/Powerbank/Statemachine.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -97,6 +97,6 @@ Core/Src/Powerbank/Statemachine.o: ../Core/Src/Powerbank/Statemachine.cpp \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/States.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Converter.h:
+C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/States.h:
+C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Definitions.h:
+C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Converter.h:

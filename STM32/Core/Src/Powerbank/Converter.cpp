@@ -29,11 +29,20 @@ void Converter::init() {
 
 // Init PWM signal
 void Converter::initPwm() {
-	HAL_TIM_PWM_Start(_tim8, TIM_CHANNEL_3);
-	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_3);
+	HAL_TIM_PWM_Start(_tim8, TIM_CHANNEL_1);
+//	HAL_TIM_PWM_Start(_tim8, TIM_CHANNEL_3);
+
+	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_1);
+//	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_3);
 
 	// Set initial duty cycle to 50%
-	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, 100);		// Set init duty cycle to 100% (high side mosfet open 100% of time, low side closed)
+	SetPwmDutyCycle(_tim8, TIM_CHANNEL_1, 30);
+
+//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 50);
+//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 25);
+
+
+//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, 50);		// Set init duty cycle to 100% (high side mosfet open 100% of time, low side closed)
 }
 
 //
@@ -43,11 +52,26 @@ void Converter::initAdc() {
 	HAL_TIM_Base_Start(_tim3);
 }
 
-// Set boost converter duty cycle % (0-100)
-void Converter::setPwmDuty(uint8_t duty) {
+
+void Converter::setPwmDuty(uint8_t duty) {	// TBD REMOVE
 	if (duty >= 0 || duty <= 100) {
-		__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, duty);
+//		__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, duty);
+//		__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, duty);
 	}
+}
+
+void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty){
+	// Determines the PWM duty cycle based on ARR register, so works with varying period.
+	// NOTE also inverts duty cycle!
+    if (duty < 0.0f) duty = 0.0f;
+    else if (duty > 100.0f) duty = 100.0f;
+	duty = 100.0f-duty;		// Invert for this application
+
+    uint32_t period = __HAL_TIM_GET_AUTORELOAD(htim);
+
+    uint32_t compare = (uint32_t)((period + 1) * duty / 100.0f);
+
+    __HAL_TIM_SET_COMPARE(htim, channel, compare);
 }
 
 void Converter::setPwmFrequency(uint16_t frequency) {

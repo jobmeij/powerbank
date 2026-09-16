@@ -93,8 +93,8 @@ all: main-build
 main-build: Powerbank_v1.elf secondary-outputs
 
 # Tool invocations
-Powerbank_v1.elf Powerbank_v1.map: $(OBJS) $(USER_OBJS) C:\Users\Job\STM32CubeIDE\workspace_1.18.1\Powerbank_v1\STM32G431C8UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Powerbank_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Job\STM32CubeIDE\workspace_1.18.1\Powerbank_v1\STM32G431C8UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Powerbank_v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Powerbank_v1.elf Powerbank_v1.map: $(OBJS) $(USER_OBJS) C:\Users\onerl\Documents\GitHub\powerbank\STM32\STM32G431C8UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Powerbank_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\onerl\Documents\GitHub\powerbank\STM32\STM32G431C8UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Powerbank_v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

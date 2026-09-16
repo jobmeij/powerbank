@@ -37,7 +37,7 @@ Core/Src/Powerbank/Converter.o: ../Core/Src/Powerbank/Converter.cpp \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h
+ C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Definitions.h
 ../Core/Src/Powerbank/Converter.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -76,4 +76,4 @@ Core/Src/Powerbank/Converter.o: ../Core/Src/Powerbank/Converter.cpp \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
-C:/Users/Job/STM32CubeIDE/workspace_1.18.1/Powerbank_v1/Core/Src/Powerbank/Definitions.h:
+C:/Users/onerl/Documents/GitHub/powerbank/STM32/Core/Src/Powerbank/Definitions.h:
