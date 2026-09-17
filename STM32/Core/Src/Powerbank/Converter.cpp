@@ -38,6 +38,8 @@ void Converter::initPwm() {
 	// Set initial duty cycle to 50%
 	SetPwmDutyCycle(_tim8, TIM_CHANNEL_1, 30);
 
+	setPwmFrequency(_tim8, TIM_CHANNEL_1, 170000000, 200000, 30);
+
 //	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 50);
 //	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 25);
 
@@ -53,14 +55,7 @@ void Converter::initAdc() {
 }
 
 
-void Converter::setPwmDuty(uint8_t duty) {	// TBD REMOVE
-	if (duty >= 0 || duty <= 100) {
-//		__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, duty);
-//		__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, duty);
-	}
-}
-
-void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty){
+void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty) {
 	// Determines the PWM duty cycle based on ARR register, so works with varying period.
 	// NOTE also inverts duty cycle!
     if (duty < 0.0f) duty = 0.0f;
@@ -74,8 +69,17 @@ void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float
     __HAL_TIM_SET_COMPARE(htim, channel, compare);
 }
 
-void Converter::setPwmFrequency(uint16_t frequency) {
-	// TODO
+void Converter::setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t timer_clock, uint32_t frequency, float duty) {
+    uint32_t prescaler = htim->Instance->PSC;
+
+    uint32_t arr = (timer_clock /
+                   ((prescaler + 1) * frequency)) - 1;
+
+    uint32_t compare = (uint32_t)((arr + 1) * duty / 100.0f);
+
+    __HAL_TIM_SET_AUTORELOAD(htim, arr);
+    SetPwmDutyCycle(htim, channel, duty);
+//    __HAL_TIM_SET_COMPARE(htim, channel, compare);
 }
 
 // ADC completed
@@ -118,7 +122,7 @@ void Converter::boostControlLoop() {
 
 	// Set PWM duty
 	uint8_t newDuty = iL_out * 100;
-	setPwmDuty(newDuty);
+//	setPwmDuty(newDuty);
 }
 
 // Boost converter output voltage setpoint change request

@@ -40,9 +40,8 @@ private:
 	TIM_HandleTypeDef* _tim8;
 
 	// Functions
-	void setPwmDuty(uint8_t duty);
-	void SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty);	// TBD keep this one or function above
-	void setPwmFrequency(uint16_t frequency);
+	void SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty);
+	void setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t timer_clock, uint32_t frequency, float duty);
 	void initPwm();
 	void initAdc();
 	void boostControlLoop();
