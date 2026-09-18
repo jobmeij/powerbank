@@ -86,6 +86,9 @@ private:
 	float voltageSetpoint = 0.0;
 	float currentSetpoint = 0.0;	// TODO TBD needed?
 
+	// Converter settings
+	float dutyCycle = 0;
+
 
 };
 

@@ -38,6 +38,7 @@ void Converter::initPwm() {
 	// Set initial duty cycle to 50%
 	SetPwmDutyCycle(_tim8, TIM_CHANNEL_1, 30);
 
+	// TODO save duty cycle in a register somewhere, such that inserting it isn't needed anymore. also tim clock (170mhz)
 	setPwmFrequency(_tim8, TIM_CHANNEL_1, 170000000, 200000, 30);
 
 //	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 50);
@@ -54,32 +55,26 @@ void Converter::initAdc() {
 	HAL_TIM_Base_Start(_tim3);
 }
 
-
+// Determines the PWM duty cycle based on ARR register, so works with varying period.
+// NOTE also inverts duty cycle!
 void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty) {
-	// Determines the PWM duty cycle based on ARR register, so works with varying period.
-	// NOTE also inverts duty cycle!
+	// Protection
     if (duty < 0.0f) duty = 0.0f;
     else if (duty > 100.0f) duty = 100.0f;
+
+    dutyCycle = duty;		// Save dutycycle target
 	duty = 100.0f-duty;		// Invert for this application
-
     uint32_t period = __HAL_TIM_GET_AUTORELOAD(htim);
-
     uint32_t compare = (uint32_t)((period + 1) * duty / 100.0f);
-
     __HAL_TIM_SET_COMPARE(htim, channel, compare);
 }
 
 void Converter::setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t timer_clock, uint32_t frequency, float duty) {
-    uint32_t prescaler = htim->Instance->PSC;
-
-    uint32_t arr = (timer_clock /
-                   ((prescaler + 1) * frequency)) - 1;
-
-    uint32_t compare = (uint32_t)((arr + 1) * duty / 100.0f);
+    uint32_t prescaler = htim->Instance->PSC;								// Get current prescaler value
+    uint32_t arr = (APB2_CLOCK / ((prescaler + 1) * frequency)) - 1;		// Determine Auto Reload Register value for set frequency
 
     __HAL_TIM_SET_AUTORELOAD(htim, arr);
-    SetPwmDutyCycle(htim, channel, duty);
-//    __HAL_TIM_SET_COMPARE(htim, channel, compare);
+    SetPwmDutyCycle(htim, channel, dutyCycle);
 }
 
 // ADC completed
