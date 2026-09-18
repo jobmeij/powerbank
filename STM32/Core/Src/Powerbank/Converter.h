@@ -12,7 +12,7 @@
 #include "stm32g4xx_hal.h"
 #include <Definitions.h>
 
-#define ADC_BUFFER_SIZE 3
+#define ADC_BUFFER_SIZE 5
 
 class Converter {
 public:
@@ -41,13 +41,13 @@ private:
 
 	// Functions
 	void SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float duty);
-	void setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t timer_clock, uint32_t frequency, float duty);
+	void setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t frequency);
 	void initPwm();
 	void initAdc();
 	void boostControlLoop();
 
 	// Variables
-	uint32_t adc1Buf[3];						// Buffer for adc1
+	uint32_t adc1Buf[5];						// Buffer for adc1
 	uint32_t vBatAdc = 0;						// Battery voltage
 	uint32_t iLAdc = 0;							// Measured inductor current
 	uint32_t vOutAdc = 0;						// Boost output voltage

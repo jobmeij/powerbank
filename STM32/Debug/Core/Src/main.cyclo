@@ -14,20 +14,20 @@
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h:1406:22:void LL_DMA_SetPeriphRequest(DMA_TypeDef*, uint32_t, uint32_t)	1
 ../Core/Src/main.cpp:97:5:int main()	1
 ../Core/Src/main.cpp:184:6:void SystemClock_Config()	3
-../Core/Src/main.cpp:234:13:void MX_ADC1_Init()	6
-../Core/Src/main.cpp:320:13:void MX_SPI2_Init()	2
-../Core/Src/main.cpp:360:13:void MX_TIM3_Init()	4
-../Core/Src/main.cpp:405:13:void MX_TIM8_Init()	6
-../Core/Src/main.cpp:481:13:void MX_UART4_Init()	5
-../Core/Src/main.cpp:529:13:void MX_UCPD1_Init()	1
-../Core/Src/main.cpp:608:13:void MX_DMA_Init()	1
-../Core/Src/main.cpp:633:13:void MX_GPIO_Init()	1
-../Core/Src/main.cpp:654:6:void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef*)	1
-../Core/Src/main.cpp:659:6:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	1
-../Core/Src/main.cpp:672:6:void StartDefaultTask(void*)	1
-../Core/Src/main.cpp:695:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
-../Core/Src/main.cpp:713:6:void Error_Handler()	1
-../Core/Src/main.cpp:722:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/main.cpp:722:1:void __static_initialization_and_destruction_1()	1
-../Core/Src/main.cpp:722:1:cpp)	1
-../Core/Src/main.cpp:722:1:cpp)	1
+../Core/Src/main.cpp:234:13:void MX_ADC1_Init()	8
+../Core/Src/main.cpp:338:13:void MX_SPI2_Init()	2
+../Core/Src/main.cpp:378:13:void MX_TIM3_Init()	4
+../Core/Src/main.cpp:423:13:void MX_TIM8_Init()	6
+../Core/Src/main.cpp:499:13:void MX_UART4_Init()	5
+../Core/Src/main.cpp:547:13:void MX_UCPD1_Init()	1
+../Core/Src/main.cpp:626:13:void MX_DMA_Init()	1
+../Core/Src/main.cpp:651:13:void MX_GPIO_Init()	1
+../Core/Src/main.cpp:672:6:void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef*)	1
+../Core/Src/main.cpp:677:6:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	1
+../Core/Src/main.cpp:690:6:void StartDefaultTask(void*)	1
+../Core/Src/main.cpp:713:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
+../Core/Src/main.cpp:731:6:void Error_Handler()	1
+../Core/Src/main.cpp:740:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/main.cpp:740:1:void __static_initialization_and_destruction_1()	1
+../Core/Src/main.cpp:740:1:cpp)	1
+../Core/Src/main.cpp:740:1:cpp)	1

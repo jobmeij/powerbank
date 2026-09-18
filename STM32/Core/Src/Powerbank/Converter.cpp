@@ -35,17 +35,9 @@ void Converter::initPwm() {
 	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_1);
 //	HAL_TIMEx_PWMN_Start(_tim8, TIM_CHANNEL_3);
 
-	// Set initial duty cycle to 50%
+	// Set initial duty cycle to 30%
 	SetPwmDutyCycle(_tim8, TIM_CHANNEL_1, 30);
-
-	// TODO save duty cycle in a register somewhere, such that inserting it isn't needed anymore. also tim clock (170mhz)
-	setPwmFrequency(_tim8, TIM_CHANNEL_1, 170000000, 200000, 30);
-
-//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 50);
-//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_1, 25);
-
-
-//	__HAL_TIM_SET_COMPARE(_tim8, TIM_CHANNEL_3, 50);		// Set init duty cycle to 100% (high side mosfet open 100% of time, low side closed)
+//	setPwmFrequency(_tim8, TIM_CHANNEL_1, 50000);
 }
 
 //
@@ -62,19 +54,19 @@ void Converter::SetPwmDutyCycle(TIM_HandleTypeDef *htim, uint32_t channel, float
     if (duty < 0.0f) duty = 0.0f;
     else if (duty > 100.0f) duty = 100.0f;
 
-    dutyCycle = duty;		// Save dutycycle target
-	duty = 100.0f-duty;		// Invert for this application
+    dutyCycle = duty;														// Save dutycycle target
+	duty = 100.0f-duty;														// Invert for this application
     uint32_t period = __HAL_TIM_GET_AUTORELOAD(htim);
     uint32_t compare = (uint32_t)((period + 1) * duty / 100.0f);
     __HAL_TIM_SET_COMPARE(htim, channel, compare);
 }
 
-void Converter::setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t timer_clock, uint32_t frequency, float duty) {
+void Converter::setPwmFrequency(TIM_HandleTypeDef *htim, uint32_t channel, uint32_t frequency) {
     uint32_t prescaler = htim->Instance->PSC;								// Get current prescaler value
     uint32_t arr = (APB2_CLOCK / ((prescaler + 1) * frequency)) - 1;		// Determine Auto Reload Register value for set frequency
 
     __HAL_TIM_SET_AUTORELOAD(htim, arr);
-    SetPwmDutyCycle(htim, channel, dutyCycle);
+    SetPwmDutyCycle(htim, channel, dutyCycle);								// Adjusting ARR also requires compare register update
 }
 
 // ADC completed
@@ -82,12 +74,16 @@ void Converter::adcComplete(ADC_HandleTypeDef* hadc) {
 	if (hadc->Instance == ADC1) {
 		vBatAdc = adc1Buf[0];		// PA0 battery voltage
 		iLAdc = adc1Buf[1];			// PA1 inductor current
-		vOutAdc = adc1Buf[2];		// PA2 boost converter output voltage
+		// adc1Buf[2] is used for 2nd current sensor, which I blew :)
+		vOutAdc = adc1Buf[3];		// PA2 boost converter output voltage
+		tBatAdc = adc1Buf[4];		// PB0 battery temperature sensor
 
-		// Convert to actual values
-		vBatVolt = (vBatAdc / 4095) * 3.3 * VBAT_SCALE;
-		iLampere = (iLAdc / 4095) * 3.3 * CURR_SCALE;
-		vOutVolt = (vOutAdc / 4095) * 3.3 * VOUT_SCALE;
+		int32_t iAdcCorrected = iLAdc - I_ADC_OFFSET;		// Correct for offset of current sense signal, TODO check if direction is right
+
+		// Convert to volts and amps
+		vBatVolt = (vBatAdc / 4095.0f) * 3.3f * ((float(VBAT_R1) + float(VBAT_R2)) / float(VBAT_R2));
+		iLampere = (iAdcCorrected / 4095.0f) * 3.3f;
+		vOutVolt = (vOutAdc / 4095.0f) * 3.3f * ((float(VOUT_R1) + float(VOUT_R2)) / float(VOUT_R2));
 	}
 
 	// Trigger control loop
